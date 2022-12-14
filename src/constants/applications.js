@@ -3,4 +3,9 @@ const NULL_VALUE = null;
 const PLAYER_ONE = "X";
 const PLAYER_TWO = "O";
 
-export { VALUE_NINE, NULL_VALUE, PLAYER_ONE, PLAYER_TWO };
+const winningLines = [
+  [0, 1, 2],
+  [3, 4, 5],
+];
+
+export { VALUE_NINE, NULL_VALUE, PLAYER_ONE, PLAYER_TWO, winningLines };

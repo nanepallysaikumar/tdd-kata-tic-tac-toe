@@ -1,3 +1,5 @@
+import { winningLines } from "../constants/applications";
+
 const calculateWinner = (board) => {
   const result = {
     hasWon: false,
@@ -5,12 +7,20 @@ const calculateWinner = (board) => {
     winnerName: "",
   };
 
-  if (board[0] && board[0] === board[1] && board[1] === board[2]) {
-    result["hasWon"] = true;
-    result["winnerName"] = board[0];
+  winningLines.forEach((winningLine) => {
+    const [squareOne, squareTwo, squareThree] = winningLine;
+    if (
+      board[squareOne] &&
+      board[squareOne] === board[squareTwo] &&
+      board[squareTwo] === board[squareThree]
+    ) {
+      result["hasWon"] = true;
+      result["winnerName"] = board[squareOne];
 
-    return result;
-  }
+      return;
+    }
+  });
+  return result;
 };
 
 export { calculateWinner };

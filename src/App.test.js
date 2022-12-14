@@ -11,7 +11,15 @@ import App from "./App";
 import { playerX, playerO } from "./testUtilities/testUtilities";
 
 let squares = [];
-let TOP_LEFT, TOP_CENTRE, TOP_RIGHT, MIDDLE_LEFT, BOTTOM_LEFT;
+let TOP_LEFT,
+  TOP_CENTRE,
+  TOP_RIGHT,
+  MIDDLE_LEFT,
+  MIDDLE_CENTRE,
+  MIDDLE_RIGHT,
+  BOTTOM_LEFT,
+  BOTTOM_CENTRE,
+  BOTTOM_RIGHT;
 
 beforeEach(() => {
   render(<App />);
@@ -20,7 +28,11 @@ beforeEach(() => {
   TOP_CENTRE = squares[1];
   TOP_RIGHT = squares[2];
   MIDDLE_LEFT = squares[3];
-  BOTTOM_LEFT = squares[4];
+  MIDDLE_CENTRE = squares[4];
+  MIDDLE_RIGHT = squares[5];
+  BOTTOM_LEFT = squares[6];
+  BOTTOM_CENTRE = squares[7];
+  BOTTOM_RIGHT = squares[8];
 });
 
 test("Board should be available with 9 sqaures when the Game starts.", () => {
@@ -61,6 +73,20 @@ test("Declare wins when one of the player draws all three squares in the first r
   playerO.drewOn(BOTTOM_LEFT);
 
   playerX.drewOn(TOP_RIGHT);
+
+  expect(screen.getByTestId(WINNING_ACCESSOR).textContent).toEqual(
+    WINNING_MESSAGE
+  );
+});
+
+test("Declare wins when one of the player draws all three squares in the second row", () => {
+  playerX.drewOn(MIDDLE_LEFT);
+  playerO.drewOn(TOP_LEFT);
+
+  playerX.drewOn(MIDDLE_CENTRE);
+  playerO.drewOn(TOP_RIGHT);
+
+  playerX.drewOn(MIDDLE_RIGHT);
 
   expect(screen.getByTestId(WINNING_ACCESSOR).textContent).toEqual(
     WINNING_MESSAGE
