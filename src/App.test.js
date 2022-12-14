@@ -6,6 +6,7 @@ import {
   CURRENT_TURN_SECOND_PLAYER,
   WINNING_ACCESSOR,
   WINNING_MESSAGE,
+  WINNING_MESSAGE_FOR_O,
 } from "./constants/testConstants";
 import App from "./App";
 import { playerX, playerO } from "./testUtilities/testUtilities";
@@ -146,5 +147,20 @@ test("Declare wins when one of the player draws all three squares in the third c
 
   expect(screen.getByTestId(WINNING_ACCESSOR).textContent).toEqual(
     WINNING_MESSAGE
+  );
+});
+
+test("Declare wins when one of the player draws all three squares diagonally from left to right.", () => {
+  playerX.drewOn(TOP_RIGHT);
+  playerO.drewOn(TOP_LEFT);
+
+  playerX.drewOn(BOTTOM_CENTRE);
+  playerO.drewOn(MIDDLE_CENTRE);
+
+  playerX.drewOn(BOTTOM_LEFT);
+  playerO.drewOn(BOTTOM_RIGHT);
+
+  expect(screen.getByTestId(WINNING_ACCESSOR).textContent).toEqual(
+    WINNING_MESSAGE_FOR_O
   );
 });
