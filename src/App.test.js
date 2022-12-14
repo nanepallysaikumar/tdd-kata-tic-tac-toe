@@ -4,18 +4,23 @@ import {
   CURRENT_TURN_TEXT,
   CURRENT_TURN_ACCESSOR,
   CURRENT_TURN_SECOND_PLAYER,
+  WINNING_ACCESSOR,
+  WINNING_MESSAGE,
 } from "./constants/testConstants";
 import App from "./App";
 import { playerX, playerO } from "./testUtilities/testUtilities";
 
 let squares = [];
-let TOP_LEFT, TOP_CENTRE;
+let TOP_LEFT, TOP_CENTRE, TOP_RIGHT, MIDDLE_LEFT, BOTTOM_LEFT;
 
 beforeEach(() => {
   render(<App />);
   squares = screen.queryAllByTestId(SQUARE);
   TOP_LEFT = squares[0];
   TOP_CENTRE = squares[1];
+  TOP_RIGHT = squares[2];
+  MIDDLE_LEFT = squares[3];
+  BOTTOM_LEFT = squares[4];
 });
 
 test("Board should be available with 9 sqaures when the Game starts.", () => {
@@ -46,4 +51,18 @@ test("Players should not allow to draw a square on already drawn square", () => 
   playerX.drewOn(TOP_LEFT);
   playerO.drewOn(TOP_LEFT);
   expect(TOP_LEFT.textContent).toEqual("X");
+});
+
+test("Declare wins when one of the player draws all three squares in the first row", () => {
+  playerX.drewOn(TOP_LEFT);
+  playerO.drewOn(MIDDLE_LEFT);
+
+  playerX.drewOn(TOP_CENTRE);
+  playerO.drewOn(BOTTOM_LEFT);
+
+  playerX.drewOn(TOP_RIGHT);
+
+  expect(screen.getByTestId(WINNING_ACCESSOR).textContent).toEqual(
+    WINNING_MESSAGE
+  );
 });
