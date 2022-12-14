@@ -134,3 +134,17 @@ test("Declare wins when one of the player draws all three squares in the second 
     WINNING_MESSAGE
   );
 });
+
+test("Declare wins when one of the player draws all three squares in the third column", () => {
+  playerX.drewOn(TOP_RIGHT);
+  playerO.drewOn(TOP_LEFT);
+
+  playerX.drewOn(MIDDLE_RIGHT);
+  playerO.drewOn(BOTTOM_CENTRE);
+
+  playerX.drewOn(BOTTOM_RIGHT);
+
+  expect(screen.getByTestId(WINNING_ACCESSOR).textContent).toEqual(
+    WINNING_MESSAGE
+  );
+});

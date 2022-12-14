@@ -9,6 +9,7 @@ const winningLines = [
   [6, 7, 8],
   [0, 3, 6],
   [1, 4, 7],
+  [2, 5, 8],
 ];
 
 export { VALUE_NINE, NULL_VALUE, PLAYER_ONE, PLAYER_TWO, winningLines };
