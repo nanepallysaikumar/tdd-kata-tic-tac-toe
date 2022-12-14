@@ -164,3 +164,18 @@ test("Declare wins when one of the player draws all three squares diagonally fro
     WINNING_MESSAGE_FOR_O
   );
 });
+
+test("Declare wins when one of the player draws all three squares diagonally from right to left.", () => {
+  playerX.drewOn(TOP_LEFT);
+  playerO.drewOn(TOP_RIGHT);
+
+  playerX.drewOn(BOTTOM_CENTRE);
+  playerO.drewOn(MIDDLE_CENTRE);
+
+  playerX.drewOn(BOTTOM_RIGHT);
+  playerO.drewOn(BOTTOM_LEFT);
+
+  expect(screen.getByTestId(WINNING_ACCESSOR).textContent).toEqual(
+    WINNING_MESSAGE_FOR_O
+  );
+});
