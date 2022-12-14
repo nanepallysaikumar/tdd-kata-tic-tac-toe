@@ -5,13 +5,17 @@ import { VALUE_NINE, NULL_VALUE, PLAYER_ONE } from "./constants/applications";
 import "./App.css";
 
 function App() {
-  const [currentPlayer] = useState(PLAYER_ONE);
+  const [currentPlayer, setCurrentPlayer] = useState(PLAYER_ONE);
   const [board] = useState(Array(VALUE_NINE).fill(NULL_VALUE));
 
   return (
     <div>
       <DisplayCurrentTurn currentTurn={currentPlayer} />
-      <Board board={board} />
+      <Board
+        board={board}
+        player={currentPlayer}
+        setCurrentPlayer={setCurrentPlayer}
+      />
     </div>
   );
 }

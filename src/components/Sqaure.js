@@ -1,5 +1,9 @@
-const Square = ({ value }) => {
-  return <button data-testid="square">{value}</button>;
+const Square = ({ value, onClick }) => {
+  return (
+    <button data-testid="square" onClick={onClick}>
+      {value}
+    </button>
+  );
 };
 
 export { Square };
