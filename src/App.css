@@ -1,0 +1,9 @@
+.container {
+  display: grid;
+  grid: 85px 85px 85px / 85px 85px 85px;
+  gap: 5px;
+}
+
+.container > button {
+  background-color: blueviolet;
+}
