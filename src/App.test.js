@@ -200,3 +200,19 @@ test("Declare draw if all squares are drawn and neither of the players are won."
     DRAW_MESSAGE
   );
 });
+
+test("Should not allow players to play once a game is declared win.", () => {
+  playerX.drewOn(TOP_LEFT);
+  playerO.drewOn(TOP_RIGHT);
+
+  playerX.drewOn(BOTTOM_CENTRE);
+  playerO.drewOn(MIDDLE_CENTRE);
+
+  playerX.drewOn(BOTTOM_RIGHT);
+  playerO.drewOn(BOTTOM_LEFT);
+
+  expect(screen.getByTestId(WINNING_ACCESSOR).textContent).toEqual(
+    WINNING_MESSAGE_FOR_O
+  );
+  expect(MIDDLE_RIGHT).toHaveAttribute("disabled");
+});

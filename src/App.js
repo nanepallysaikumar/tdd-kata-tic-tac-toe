@@ -26,6 +26,7 @@ function App() {
         player={currentPlayer}
         setCurrentPlayer={setCurrentPlayer}
         setBoard={setBoard}
+        {...gameResult}
       />
     </div>
   );

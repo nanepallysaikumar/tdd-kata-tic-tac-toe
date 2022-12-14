@@ -1,6 +1,6 @@
-const Square = ({ value, onClick }) => {
+const Square = ({ value, onClick, hasWon }) => {
   return (
-    <button data-testid="square" onClick={onClick}>
+    <button disabled={hasWon} data-testid="square" onClick={onClick}>
       {value}
     </button>
   );

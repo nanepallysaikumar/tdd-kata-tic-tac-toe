@@ -1,7 +1,7 @@
 import { Square } from "./Sqaure";
 import { PLAYER_ONE, PLAYER_TWO } from "../constants/applications";
 
-const Board = ({ board, setBoard, player, setCurrentPlayer }) => {
+const Board = ({ board, setBoard, player, setCurrentPlayer, hasWon }) => {
   const drawSquare = (stepNumber) => {
     const updateBoard = [...board];
     const nextPlayer = player === PLAYER_ONE ? PLAYER_TWO : PLAYER_ONE;
@@ -21,6 +21,7 @@ const Board = ({ board, setBoard, player, setCurrentPlayer }) => {
         <Square
           key={stepNumber}
           value={square}
+          hasWon={hasWon}
           onClick={() => drawSquare(stepNumber)}
         />
       ))}
