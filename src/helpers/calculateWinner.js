@@ -1,5 +1,9 @@
 import { winningLines } from "../constants/applications";
 
+function isMatchDraw(board, result) {
+  return !board.includes(null) && !result.win;
+}
+
 const calculateWinner = (board) => {
   const result = {
     hasWon: false,
@@ -20,6 +24,12 @@ const calculateWinner = (board) => {
       return;
     }
   });
+
+  if (isMatchDraw(board, result)) {
+    result["isDraw"] = true;
+    return result;
+  }
+
   return result;
 };
 

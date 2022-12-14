@@ -7,6 +7,7 @@ import {
   WINNING_ACCESSOR,
   WINNING_MESSAGE,
   WINNING_MESSAGE_FOR_O,
+  DRAW_MESSAGE,
 } from "./constants/testConstants";
 import App from "./App";
 import { playerX, playerO } from "./testUtilities/testUtilities";
@@ -177,5 +178,25 @@ test("Declare wins when one of the player draws all three squares diagonally fro
 
   expect(screen.getByTestId(WINNING_ACCESSOR).textContent).toEqual(
     WINNING_MESSAGE_FOR_O
+  );
+});
+
+test("Declare draw if all squares are drawn and neither of the players are won.", () => {
+  playerX.drewOn(TOP_LEFT);
+  playerO.drewOn(TOP_CENTRE);
+
+  playerX.drewOn(TOP_RIGHT);
+  playerO.drewOn(MIDDLE_LEFT);
+
+  playerX.drewOn(MIDDLE_CENTRE);
+  playerO.drewOn(BOTTOM_LEFT);
+
+  playerX.drewOn(BOTTOM_CENTRE);
+  playerO.drewOn(BOTTOM_RIGHT);
+
+  playerO.drewOn(MIDDLE_RIGHT);
+
+  expect(screen.getByTestId(WINNING_ACCESSOR).textContent).toEqual(
+    DRAW_MESSAGE
   );
 });

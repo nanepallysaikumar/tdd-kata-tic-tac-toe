@@ -5,6 +5,7 @@ const CURRENT_TURN_ACCESSOR = "current-turn";
 const WINNING_ACCESSOR = "winner";
 const WINNING_MESSAGE = "X is the Winner of the Match.";
 const WINNING_MESSAGE_FOR_O = "O is the Winner of the Match.";
+const DRAW_MESSAGE = "Match is Draw.";
 
 let TOP_LEFT;
 let TOP_CENTRE;
@@ -19,4 +20,5 @@ export {
   WINNING_ACCESSOR,
   WINNING_MESSAGE,
   WINNING_MESSAGE_FOR_O,
+  DRAW_MESSAGE,
 };
