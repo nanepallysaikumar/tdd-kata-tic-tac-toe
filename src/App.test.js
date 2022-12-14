@@ -41,3 +41,9 @@ test("Players name should be registered on the respective Square after each move
   expect(TOP_LEFT.textContent).toEqual("X");
   expect(TOP_CENTRE.textContent).toEqual("O");
 });
+
+test("Players should not allow to draw a square on already drawn square", () => {
+  playerX.drewOn(TOP_LEFT);
+  playerO.drewOn(TOP_LEFT);
+  expect(TOP_LEFT.textContent).toEqual("X");
+});
