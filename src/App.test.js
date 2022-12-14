@@ -30,3 +30,9 @@ test("Turn should be switched to Player O if player X has draw the sqaure", () =
     CURRENT_TURN_SECOND_PLAYER
   );
 });
+
+test("Players name should be registered on the respective Square after each move.", () => {
+  const squares = screen.queryAllByTestId(SQUARE);
+  fireEvent.click(squares[0]);
+  expect(squares[0].textContent).toEqual("X");
+});

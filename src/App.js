@@ -6,7 +6,7 @@ import "./App.css";
 
 function App() {
   const [currentPlayer, setCurrentPlayer] = useState(PLAYER_ONE);
-  const [board] = useState(Array(VALUE_NINE).fill(NULL_VALUE));
+  const [board, setBoard] = useState(Array(VALUE_NINE).fill(NULL_VALUE));
 
   return (
     <div>
@@ -15,6 +15,7 @@ function App() {
         board={board}
         player={currentPlayer}
         setCurrentPlayer={setCurrentPlayer}
+        setBoard={setBoard}
       />
     </div>
   );
